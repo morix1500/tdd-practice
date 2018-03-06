@@ -5,23 +5,25 @@ import (
 )
 
 func TestMultipliction(t *testing.T) {
-	five := Doller{Amount: 5}
-	if got, want := five.times(2).Amount, 10; got != want {
-		t.Errorf("amount: got %v want %v", got, want)
+	five := NewDollar(5)
+    want := NewDollar(10)
+	if !five.times(2).equals(want) {
+		t.Errorf("amount: got %v want %v", five.times(2), want)
 	}
 
-	if got, want := five.times(3).Amount, 15; got != want {
-		t.Errorf("amount: got %v want %v", got, want)
+    want = NewDollar(15)
+	if !five.times(3).equals(want) {
+		t.Errorf("amount: got %v want %v", five.times(3), want)
 	}
 }
 
 func TestEquality(t *testing.T)  {
-    a := Doller{Amount: 5}
-    b := Doller{Amount: 5}
+    a := NewDollar(5)
+    b := NewDollar(5)
     if !a.equals(b) {
         t.Error("equals: got false want true")
     }
-    c := Doller{Amount: 6}
+    c := NewDollar(6)
     if a.equals(c) {
         t.Error("equals: got true want false")
     }

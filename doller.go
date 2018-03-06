@@ -1,16 +1,22 @@
 package doller
 
-type Doller struct{
-    Amount int
+type Dollar struct{
+    amount int
 }
 
-func (d Doller) times(cnt int) Doller {
-	return Doller{
-        Amount: d.Amount * cnt,
+func NewDollar(amount int) *Dollar {
+    dollar := &Dollar{}
+    dollar.amount = amount
+    return dollar
+}
+
+func (d Dollar) times(cnt int) *Dollar {
+	return &Dollar{
+        amount: d.amount * cnt,
     }
 }
 
-func (d Doller) equals(object interface{}) bool {
-    o := object.(Doller)
-    return d.Amount == o.Amount
+func (d Dollar) equals(object interface{}) bool {
+    o := object.(*Dollar)
+    return d.amount == o.amount
 }
