@@ -1,4 +1,4 @@
-package doller
+package money
 
 import (
 	"testing"
@@ -27,4 +27,17 @@ func TestEquality(t *testing.T)  {
     if a.equals(c) {
         t.Error("equals: got true want false")
     }
+}
+
+func TestFrancMultipliction(t *testing.T) {
+	five := NewFranc(5)
+    want := NewFranc(10)
+	if !five.times(2).equals(want) {
+		t.Errorf("amount: got %v want %v", five.times(2), want)
+	}
+
+    want = NewFranc(15)
+	if !five.times(3).equals(want) {
+		t.Errorf("amount: got %v want %v", five.times(3), want)
+	}
 }
