@@ -1,55 +1,25 @@
 package money
 
 import (
+	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
 func TestMultipliction(t *testing.T) {
 	five := NewDollar(5)
-    want := NewDollar(10)
-	if !five.times(2).equals(want) {
-		t.Errorf("amount: got %v want %v", five.times(2), want)
-	}
-
-    want = NewDollar(15)
-	if !five.times(3).equals(want) {
-		t.Errorf("amount: got %v want %v", five.times(3), want)
-	}
+	assert.Equal(t, five.times(2), NewDollar(10), "times function have problem")
+	assert.Equal(t, five.times(3), NewDollar(15), "times function have problem")
 }
 
-func TestEquality(t *testing.T)  {
-    a := NewDollar(5)
-    b := NewDollar(5)
-    if !a.equals(b) {
-        t.Error("equals: got false want true")
-    }
-    c := NewDollar(6)
-    if a.equals(c) {
-        t.Error("equals: got true want false")
-    }
+func TestEquality(t *testing.T) {
+	assert.True(t, NewDollar(5).equals(NewDollar(5)), "amount is not equals")
+	assert.False(t, NewDollar(6).equals(NewDollar(5)), "amount is not equals")
+	assert.True(t, NewFranc(5).equals(NewFranc(5)), "amount is not equals")
+	assert.False(t, NewFranc(6).equals(NewFranc(5)), "amount is not equals")
 }
 
 func TestFrancMultipliction(t *testing.T) {
 	five := NewFranc(5)
-    want := NewFranc(10)
-	if !five.times(2).equals(want) {
-		t.Errorf("amount: got %v want %v", five.times(2), want)
-	}
-
-    want = NewFranc(15)
-	if !five.times(3).equals(want) {
-		t.Errorf("amount: got %v want %v", five.times(3), want)
-	}
-}
-
-func TestFrancEquality(t *testing.T)  {
-    a := NewFranc(5)
-    b := NewFranc(5)
-    if !a.equals(b) {
-        t.Error("equals: got false want true")
-    }
-    c := NewFranc(6)
-    if a.equals(c) {
-        t.Error("equals: got true want false")
-    }
+	assert.Equal(t, five.times(2), NewFranc(10), "times function have problem")
+	assert.Equal(t, five.times(3), NewFranc(15), "times function have problem")
 }
