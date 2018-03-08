@@ -10,14 +10,14 @@ func (m Money) Equals(object interface{}) bool {
 	return m.amount == o.amount && m.currency == o.currency
 }
 
-func (m Money) Times(cnt int) Money {
+func (m Money) Times(cnt int) Expression {
 	return Money{
 		amount:   m.amount * cnt,
 		currency: m.currency,
 	}
 }
 
-func (m Money) Plus(addend Money) Expression {
+func (m Money) Plus(addend Expression) Expression {
 	return Sum{
 		augend: m,
 		addend: addend,
