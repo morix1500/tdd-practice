@@ -6,13 +6,20 @@ type Money struct {
 }
 
 func (m Money) equals(object interface{}) bool {
-	o := object.(*Money)
+	o := object.(Money)
 	return m.amount == o.amount && m.currency == o.currency
 }
 
-func (m Money) times(cnt int) *Money {
-	return &Money{
+func (m Money) times(cnt int) Money {
+	return Money{
 		amount:   m.amount * cnt,
 		currency: m.currency,
 	}
+}
+
+func (m Money) plus(money Money) Expression {
+    return Money{
+        amount: m.amount + m.amount,
+        currency: m.currency,
+    }
 }
