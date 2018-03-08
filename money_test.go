@@ -41,3 +41,15 @@ func TestFrancMultipliction(t *testing.T) {
 		t.Errorf("amount: got %v want %v", five.times(3), want)
 	}
 }
+
+func TestFrancEquality(t *testing.T)  {
+    a := NewFranc(5)
+    b := NewFranc(5)
+    if !a.equals(b) {
+        t.Error("equals: got false want true")
+    }
+    c := NewFranc(6)
+    if a.equals(c) {
+        t.Error("equals: got true want false")
+    }
+}
