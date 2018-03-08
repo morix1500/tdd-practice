@@ -5,25 +5,25 @@ type Money struct {
 	currency string
 }
 
-func (m Money) equals(object interface{}) bool {
+func (m Money) Equals(object interface{}) bool {
 	o := object.(Money)
 	return m.amount == o.amount && m.currency == o.currency
 }
 
-func (m Money) times(cnt int) Money {
+func (m Money) Times(cnt int) Money {
 	return Money{
 		amount:   m.amount * cnt,
 		currency: m.currency,
 	}
 }
 
-func (m Money) plus(addend Money) Expression {
-    return Sum{
-        augend: m,
-        addend: addend,
-    }
+func (m Money) Plus(addend Money) Expression {
+	return Sum{
+		augend: m,
+		addend: addend,
+	}
 }
 
 func (m Money) Reduce(to string) Money {
-    return m
+	return m
 }
