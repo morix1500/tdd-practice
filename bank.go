@@ -1,5 +1,5 @@
 package money
 
-func Reduce(m Expression, currency string) Money {
-    return m.(Money)
+func Reduce(source Expression, to string) Money {
+    return source.Reduce(to)
 }
